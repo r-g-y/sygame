@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code name="clientconnect">
+  <if action="clientStart" type="local" name="logincenter">
+    <!-- ���ص�ͼ ��ͼ����Ϊtest-->
+    <loadmap name="test"/>
+    <reg to="logincenter" ip="127.0.0.1" port="5051" meType="login"/>
+  </if> 
+  <!--��Ӹ�Ŀ¼����ע�ᵽ��Ŀ¼-->
+  <if action="clientStart" type="local" name="root">
+    <!--��Ӹ�ڵ����ĳɹ�-->
+    <reg to="root" ip="127.0.0.1" port="5051" meType="logincenter"/>
+    <reg to="root" ip="127.0.0.1" port="5051" meType="map" mapName="test"/>
+    <reg to="root" ip="127.0.0.1" port="5051" meType="login"/>
+    <!--ע���Լ�-->
+  </if>
+</code>
+<code name="start">
+  <!--withno name="AboutLogin::reqValidLoginNode"/-->
+  <serverStart port="4008"/>
+  <serverStart port="5051"/>
+  <!--�������4050ڽڵ��-->
+  <!--exec name="clientconnect"/-->
+</code>
